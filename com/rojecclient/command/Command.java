@@ -1,9 +1,8 @@
-package command;
+package com.rojecclient.command;
 
-import util.Util;
-import dto.Request;
-import display.Display;
-//import constants.Constants;
+import com.rojecclient.util.Util;
+import com.rojecclient.dto.Request;
+import com.rojecclient.display.Display;
 
 
 public class Command {

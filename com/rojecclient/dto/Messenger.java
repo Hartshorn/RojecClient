@@ -1,4 +1,4 @@
-package dto;
+package com.rojecclient.dto;
 
 import java.util.List;
 import java.util.ArrayList;

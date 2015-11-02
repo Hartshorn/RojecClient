@@ -1,10 +1,12 @@
-package util;
+package com.rojecclient.util;
+
+import com.rojecservice.service.RojecService;
+import com.rojecclient.dto.Request;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.URL;
 
-import dto.Request;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -39,7 +41,7 @@ public class Util {
 
 	public static RojecService setupService() throws Exception {
     URL wsdlUrl = new URL("http://localhost:8888/rojec?wsdl");
-    QName qname = new QName("http://webservice/", "RojecServiceImplService");
+    QName qname = new QName("http://service.rojecservice.com/", "RojecServiceImplService");
     Service service = Service.create(wsdlUrl, qname);
     return service.getPort(RojecService.class);
   }

@@ -1,6 +1,6 @@
-package display;
+package com.rojecclient.display;
 
-import dto.Request;
+import com.rojecclient.dto.Request;
 
 import java.util.HashMap;
 

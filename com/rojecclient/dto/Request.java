@@ -1,4 +1,4 @@
-package dto;
+package com.rojecclient.dto;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class Request implements Messenger {
 	public Integer getId() {
 		return this.id;
 	}
-	
+
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
@@ -22,7 +22,7 @@ public class Request implements Messenger {
 
 	public Integer getSelection() {
 		return this.selection;
-	
+
 	}
 
 	public void setSelection(Integer n) {
