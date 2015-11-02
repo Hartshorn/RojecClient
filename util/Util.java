@@ -1,5 +1,8 @@
 package util;
 
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+import java.net.URL;
 
 import dto.Request;
 import java.util.Random;
@@ -33,4 +36,11 @@ public class Util {
 	private static Integer generateId() {
 		return rng.nextInt(100);
 	}
+
+	public static RojecService setupService() throws Exception {
+    URL wsdlUrl = new URL("http://localhost:8888/rojec?wsdl");
+    QName qname = new QName("http://webservice/", "RojecServiceImplService");
+    Service service = Service.create(wsdlUrl, qname);
+    return service.getPort(RojecService.class);
+  }
 }
