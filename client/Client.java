@@ -10,11 +10,8 @@ public class Client {
 	private static Command command = new Command();
 
 	public static void main(String ... args) {
-		
-		command.proceed();
-
-		System.out.println("You entered: " + command.getRequest().getSelection());
-
-		command.proceed();
+		do {
+			command.proceed();
+		} while (command.getStatus() != Command.Status.COMPLETE);
 	}
 }

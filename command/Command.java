@@ -3,7 +3,7 @@ package command;
 import util.Util;
 import dto.Request;
 import display.Display;
-import constants.Constants;
+//import constants.Constants;
 
 
 public class Command {
@@ -11,15 +11,15 @@ public class Command {
 	private static Request request;
 	private static Util util = new Util();
 	private static Display display = new Display();
-	
-	
+
+
 	private enum MenuChoice { DISPLAY_MENU, SHOW_ALL_MESSAGES };
-	private enum Status { INIT, DISPLAY, REQUEST, RETURN };
+	public enum Status { INIT, DISPLAY, REQUEST, RETURN, COMPLETE };
 
 	private Status status;
 
 	public Command() {
-		this.status = Status.INIT;	
+		this.status = Status.INIT;
 		this.request = util.initRequest();
 	}
 
@@ -30,13 +30,34 @@ public class Command {
 			case INIT:
 				show(MenuChoice.DISPLAY_MENU);
 				util.initRequest(request);
-				this.status = Status.REQUEST;
+				this.status = Status.DISPLAY;
 				break;
-			
+
 			case DISPLAY:
-				show(MenuChoice.SHOW_ALL_MESSAGES);
-				this.status = Status.REQUEST;
+				Integer selection = request.getSelection();
+
+				if (selection == 4) {
+
+					show(MenuChoice.SHOW_ALL_MESSAGES);
+					this.status = Status.INIT;
+
+				} else if (selection == 1) {
+
+					util.addMessage(request);
+					this.status = Status.INIT;
+
+				} else {
+					this.status = Status.COMPLETE;
+				}
 				break;
+
+			case REQUEST:
+				this.status = Status.RETURN;
+				break;
+
+			case RETURN:
+				this.status = Status.COMPLETE;
+				return;
 
 			default:
 				show(MenuChoice.DISPLAY_MENU);
@@ -66,7 +87,10 @@ public class Command {
 				break;
 		}
 	}
-	
-	
+
+	public Status getStatus() {
+		return this.status;
+	}
+
 
 }
