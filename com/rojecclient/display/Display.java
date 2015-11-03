@@ -20,7 +20,8 @@ public class Display {
 		menu.put(1,": add");
 		menu.put(2,": remove");
 		menu.put(3,": edit");
-		menu.put(4,": show all messages");
+		menu.put(4,": show all accounts");
+		menu.put(5,": quit");
 
 		System.out.println("_______ROJEC______");
 		System.out.println("\nPlease select from the following:");

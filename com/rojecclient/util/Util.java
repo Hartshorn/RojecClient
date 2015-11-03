@@ -1,6 +1,6 @@
 package com.rojecclient.util;
 
-import com.rojecservice.service.RojecService;
+import com.rojecservice.service.RojecServiceImplService;
 import com.rojecclient.dto.Request;
 
 import javax.xml.namespace.QName;
@@ -16,33 +16,10 @@ public class Util {
 	private Scanner scanner = new Scanner(System.in);
 
 
-	public static Request initRequest() {
-
-		Request request = new Request();
-
-		request.setId(generateId());
-
-		return request;
-	}
-
-	public void initRequest(Request request) {
-		request.setSelection(scanner.nextInt());
-		scanner.nextLine();
-	}
-
-	public void addMessage(Request request) {
-		System.out.println("Please type message to add: ");
-		request.addMessage(scanner.nextLine());
-	}
-
-	private static Integer generateId() {
-		return rng.nextInt(100);
-	}
-
-	public static RojecService setupService() throws Exception {
+	public static RojecServiceImplService setupService() throws Exception {
     URL wsdlUrl = new URL("http://localhost:8888/rojec?wsdl");
     QName qname = new QName("http://service.rojecservice.com/", "RojecServiceImplService");
     Service service = Service.create(wsdlUrl, qname);
-    return service.getPort(RojecService.class);
+    return service.getPort(RojecServiceImplService.class);
   }
 }
