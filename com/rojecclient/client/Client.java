@@ -4,7 +4,7 @@ package com.rojecclient.client;
 // it can be compiled this way and will work, though it differs from the actual
 // application (service) structure
 import com.rojecservice.service.ServiceTunnel;
-import com.rojecservice.service.RojecServiceImplService;
+import com.rojecservice.service.RojecService;
 
 import com.rojecclient.command.Command;
 import com.rojecclient.util.Util;
@@ -20,13 +20,22 @@ public class Client {
 	public static void main(String ... args) {
 
 		try {
-			 RojecServiceImplService service = Util.setupService();
+			 RojecService service = Util.setupService();
 
 			 while (command.getStatus() != COMPLETE) {
 
-				 //event loop - do everything here - return
-				 // command.nextIteration()
+				 ServiceTunnel getItemTunnel = new ServiceTunnel();
+				 getItemTunnel.setChoice(5);
+				 getItemTunnel.setId(63);
 
+				 service.process(getItemTunnel);
+
+				 System.out.println("Message: " + getItemTunnel.getMessage());
+				 System.out.println("Name: " 		+ getItemTunnel.getName());
+				 System.out.println("City: " 		+ getItemTunnel.getCity());
+				 System.out.println("State: " 	+ getItemTunnel.getState());
+
+				 command.setStatus(COMPLETE);
 
 			 }
 

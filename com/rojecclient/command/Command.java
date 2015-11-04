@@ -15,9 +15,13 @@ public class Command {
 
 
 
-	
+
 
 	public int getStatus() {
 		return this.status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

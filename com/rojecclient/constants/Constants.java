@@ -1,4 +1,4 @@
-package constants;
+package com.rojecclient.constants;
 
 public final class Constants {
 
